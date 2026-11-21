@@ -23,6 +23,11 @@ but the holding
 changing hands.
 `;
 
+const codePoints = [...poem].length;
+if (codePoints < 1 || codePoints > 280) {
+  throw new Error(`poem is ${codePoints} code points; the limit is 280`);
+}
+
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "entry.txt"), poem, "utf8");
